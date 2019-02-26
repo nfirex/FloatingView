@@ -839,6 +839,11 @@ class FloatingView extends FrameLayout implements ViewTreeObserver.OnPreDrawList
         }
         // 移動
         else if (action == MotionEvent.ACTION_MOVE) {
+            if (mVelocityTracker == null) {
+                // Retrieve a new VelocityTracker object to watch the velocity of a motion.
+                mVelocityTracker = VelocityTracker.obtain();
+            }
+
             // 移動判定の場合は長押しの解除
             if (mIsMoveAccept) {
                 mIsLongPressed = false;
